@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 class FileHandler(BaseHTTPRequestHandler):
-    __root_folder = os.path.abspath("files")
+    __root_folder = "files"
     __content_type = {
         'html': 'text/html',
         'css': 'text/css',
@@ -20,7 +20,7 @@ class FileHandler(BaseHTTPRequestHandler):
         path = self.path # This is the request from the browser
         if path == "/":
             path = "/index.html"        
-        file_path = self.__root_folder + path
+        file_path = os.path.abspath(self.__root_folder + path)
 
         try: 
             print(file_path)
